@@ -1,10 +1,6 @@
 {
 	"name": "Source",
 	"properties": {
-		"linkedServiceName": {
-			"referenceName": "exchangeratesapi",
-			"type": "LinkedServiceReference"
-		},
 		"parameters": {
 			"DateFrom": {
 				"type": "string",
