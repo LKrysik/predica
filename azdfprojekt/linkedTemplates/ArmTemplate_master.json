@@ -7,6 +7,10 @@
 			"metadata": "Data Factory name",
 			"defaultValue": "azdfprojekt"
 		},
+		"AzureDataLakeStorage1_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
+		},
 		"DWH_connectionString": {
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'DWH'"
@@ -15,9 +19,13 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'connectionString' of 'STG_Storage'"
 		},
-		"exchangeratesapi_properties_typeProperties_url": {
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
-			"defaultValue": "https://api.exchangeratesapi.io/"
+			"defaultValue": "https://storageaccoutforexrates.dfs.core.windows.net"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://api.exchangeratesapi.io"
 		},
 		"containerUri": {
 			"type": "string",
@@ -46,14 +54,20 @@
 					"factoryName": {
 						"value": "[parameters('factoryName')]"
 					},
+					"AzureDataLakeStorage1_accountKey": {
+						"value": "[parameters('AzureDataLakeStorage1_accountKey')]"
+					},
 					"DWH_connectionString": {
 						"value": "[parameters('DWH_connectionString')]"
 					},
 					"STG_Storage_connectionString": {
 						"value": "[parameters('STG_Storage_connectionString')]"
 					},
-					"exchangeratesapi_properties_typeProperties_url": {
-						"value": "[parameters('exchangeratesapi_properties_typeProperties_url')]"
+					"AzureDataLakeStorage1_properties_typeProperties_url": {
+						"value": "[parameters('AzureDataLakeStorage1_properties_typeProperties_url')]"
+					},
+					"RestService1_properties_typeProperties_url": {
+						"value": "[parameters('RestService1_properties_typeProperties_url')]"
 					}
 				}
 			},

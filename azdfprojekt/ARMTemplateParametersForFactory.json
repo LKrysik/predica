@@ -5,14 +5,20 @@
 		"factoryName": {
 			"value": "azdfprojekt"
 		},
+		"AzureDataLakeStorage1_accountKey": {
+			"value": ""
+		},
 		"DWH_connectionString": {
 			"value": ""
 		},
 		"STG_Storage_connectionString": {
 			"value": ""
 		},
-		"exchangeratesapi_properties_typeProperties_url": {
-			"value": "https://api.exchangeratesapi.io/"
+		"AzureDataLakeStorage1_properties_typeProperties_url": {
+			"value": "https://storageaccoutforexrates.dfs.core.windows.net"
+		},
+		"RestService1_properties_typeProperties_url": {
+			"value": "https://api.exchangeratesapi.io"
 		}
 	}
 }
