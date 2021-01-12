@@ -13,7 +13,8 @@
 				"fileSystem": "parquet"
 			},
 			"columnDelimiter": ",",
-			"escapeChar": "\\",
+			"rowDelimiter": "\r",
+			"escapeChar": "",
 			"quoteChar": "\""
 		},
 		"schema": []
