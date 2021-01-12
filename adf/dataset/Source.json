@@ -20,10 +20,7 @@
 		"typeProperties": {
 			"location": {
 				"type": "HttpServerLocation",
-				"relativeUrl": {
-					"value": "@history?start_at=dataset().DateFrom&end_at=dataset().DateTo",
-					"type": "Expression"
-				}
+				"relativeUrl": "history?start_at=2018-01-01&end_at=2018-09-01"
 			}
 		},
 		"schema": {
