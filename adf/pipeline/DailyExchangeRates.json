@@ -25,6 +25,15 @@
 							"type": "JsonReadSettings"
 						}
 					},
+					"sink": {
+						"type": "JsonSink",
+						"storeSettings": {
+							"type": "AzureBlobStorageWriteSettings"
+						},
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
 					"enableStaging": false
 				},
 				"inputs": [
@@ -35,6 +44,12 @@
 							"DateFrom": "2021-01-01",
 							"DateTo": "2021-01-03"
 						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "ExRatesJson",
+						"type": "DatasetReference"
 					}
 				]
 			}
