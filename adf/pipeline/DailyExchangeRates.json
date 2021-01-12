@@ -30,7 +30,33 @@
 							"type": "JsonWriteSettings"
 						}
 					},
-					"enableStaging": false
+					"enableStaging": false,
+					"translator": {
+						"type": "TabularTranslator",
+						"mappings": [
+							{
+								"source": {
+									"path": "$['rates']"
+								},
+								"sink": {
+									"path": "rates"
+								}
+							},
+							{
+								"source": {
+									"path": "$['rates']['date']"
+								},
+								"sink": {
+									"path": "date"
+								}
+							},
+							{
+								"source": {
+									"path": "$['rates']['currency']"
+								}
+							}
+						]
+					}
 				},
 				"inputs": [
 					{
