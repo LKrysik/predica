@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Load from exchangerates",
+				"name": "Copy data1",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -16,39 +16,16 @@
 				"userProperties": [],
 				"typeProperties": {
 					"source": {
-						"type": "JsonSource",
-						"storeSettings": {
-							"type": "HttpReadSettings",
-							"requestMethod": "Post"
-						},
-						"formatSettings": {
-							"type": "JsonReadSettings"
-						}
-					},
-					"sink": {
-						"type": "JsonSink",
-						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
-						},
-						"formatSettings": {
-							"type": "JsonWriteSettings"
-						}
+						"type": "RestSource",
+						"httpRequestTimeout": "00:01:40",
+						"requestInterval": "00.00:00:00.010",
+						"requestMethod": "GET"
 					},
 					"enableStaging": false
 				},
 				"inputs": [
 					{
-						"referenceName": "Source",
-						"type": "DatasetReference",
-						"parameters": {
-							"DateFrom": "2021-01-01",
-							"DateTo": "2021-01-03"
-						}
-					}
-				],
-				"outputs": [
-					{
-						"referenceName": "ExRatesJson",
+						"referenceName": "RestResource",
 						"type": "DatasetReference"
 					}
 				]
