@@ -36,10 +36,10 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['date']"
+									"path": "['data']"
 								},
 								"sink": {
-									"path": "date"
+									"path": "data"
 								}
 							}
 						],
