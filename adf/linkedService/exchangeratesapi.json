@@ -1,6 +1,7 @@
 {
 	"name": "exchangeratesapi",
 	"properties": {
+		"description": "Foreign exchange rates API \n",
 		"annotations": [],
 		"type": "HttpServer",
 		"typeProperties": {
