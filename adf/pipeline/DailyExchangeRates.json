@@ -1,0 +1,60 @@
+{
+	"name": "DailyExchangeRates",
+	"properties": {
+		"activities": [
+			{
+				"name": "Load from exchangerates",
+				"type": "Copy",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "HttpReadSettings",
+							"requestMethod": "GET"
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"sink": {
+						"type": "JsonSink",
+						"formatSettings": {
+							"type": "JsonWriteSettings"
+						}
+					},
+					"enableStaging": false
+				},
+				"inputs": [
+					{
+						"referenceName": "Source",
+						"type": "DatasetReference",
+						"parameters": {
+							"DateFrom": "2021-01-01",
+							"DateTo": "2021-01-03"
+						}
+					}
+				],
+				"outputs": [
+					{
+						"referenceName": "Source",
+						"type": "DatasetReference",
+						"parameters": {
+							"DateFrom": "2021-01-01",
+							"DateTo": "2021-01-03"
+						}
+					}
+				]
+			}
+		],
+		"annotations": []
+	}
+}
