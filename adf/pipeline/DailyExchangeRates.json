@@ -96,30 +96,15 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['start_at']"
+									"path": "['rate']"
 								},
 								"sink": {
-									"name": "start_at"
-								}
-							},
-							{
-								"source": {
-									"path": "$['base']"
-								},
-								"sink": {
-									"name": "base"
-								}
-							},
-							{
-								"source": {
-									"path": "$['end_at']"
-								},
-								"sink": {
-									"name": "end_at"
+									"name": "rate",
+									"type": "String"
 								}
 							}
 						],
-						"collectionReference": "",
+						"collectionReference": "$['rates']",
 						"mapComplexValuesToString": true
 					}
 				},
