@@ -41,22 +41,17 @@
 							},
 							{
 								"source": {
-									"path": "$['Column_5']"
+									"path": "$['start_at']"
 								}
 							},
 							{
 								"source": {
-									"path": "$['Column_2']"
+									"path": "$['base']"
 								}
 							},
 							{
 								"source": {
-									"path": "$['Column_3']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['Column_4']"
+									"path": "$['end_at']"
 								}
 							}
 						]
