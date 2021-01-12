@@ -24,38 +24,13 @@
 					"sink": {
 						"type": "JsonSink",
 						"storeSettings": {
-							"type": "AzureBlobStorageWriteSettings"
+							"type": "AzureBlobFSWriteSettings"
 						},
 						"formatSettings": {
 							"type": "JsonWriteSettings"
 						}
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"path": "$['rates']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['start_at']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['base']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['end_at']"
-								}
-							}
-						]
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
@@ -65,7 +40,7 @@
 				],
 				"outputs": [
 					{
-						"referenceName": "BlobStorageForJson",
+						"referenceName": "Json1",
 						"type": "DatasetReference"
 					}
 				]
