@@ -36,16 +36,14 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['rates']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['rates']['date']"
+									"path": "$['date']"
+								},
+								"sink": {
+									"path": "date"
 								}
 							}
 						],
-						"collectionReference": ""
+						"collectionReference": "$['rates']"
 					}
 				},
 				"inputs": [
