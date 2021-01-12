@@ -1,0 +1,12 @@
+{
+	"name": "exchangeratesapi",
+	"properties": {
+		"annotations": [],
+		"type": "HttpServer",
+		"typeProperties": {
+			"url": "https://api.exchangeratesapi.io/history?start_at=2018-01-01&end_at=2018-09-01",
+			"enableServerCertificateValidation": false,
+			"authenticationType": "Anonymous"
+		}
+	}
+}
