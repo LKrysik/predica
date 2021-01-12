@@ -5,6 +5,16 @@
 			"referenceName": "exchangeratesapi",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"DateFrom": {
+				"type": "string",
+				"defaultValue": "1900-01-01"
+			},
+			"DateTo": {
+				"type": "string",
+				"defaultValue": "2021-01-01"
+			}
+		},
 		"annotations": [],
 		"type": "Json",
 		"typeProperties": {
