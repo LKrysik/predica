@@ -96,20 +96,10 @@
 						"mappings": [
 							{
 								"source": {
-									"path": "$['rates']"
-								},
-								"sink": {
-									"type": "String",
-									"ordinal": 1
-								}
-							},
-							{
-								"source": {
 									"path": "$['start_at']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 2
+									"name": "start_at"
 								}
 							},
 							{
@@ -117,8 +107,7 @@
 									"path": "$['base']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 3
+									"name": "base"
 								}
 							},
 							{
@@ -126,8 +115,7 @@
 									"path": "$['end_at']"
 								},
 								"sink": {
-									"type": "String",
-									"ordinal": 4
+									"name": "end_at"
 								}
 							}
 						],
