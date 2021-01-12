@@ -67,7 +67,7 @@
 			"dependsOn": []
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/ExRates')]",
+			"name": "[concat(parameters('factoryName'), '/ExRatesJson')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
@@ -17383,8 +17383,7 @@
 									"type": "AzureBlobStorageWriteSettings"
 								},
 								"formatSettings": {
-									"type": "JsonWriteSettings",
-									"filePattern": "arrayOfObjects"
+									"type": "JsonWriteSettings"
 								}
 							},
 							"enableStaging": false
@@ -17401,7 +17400,7 @@
 						],
 						"outputs": [
 							{
-								"referenceName": "ExRates",
+								"referenceName": "ExRatesJson",
 								"type": "DatasetReference",
 								"parameters": {}
 							}
@@ -17412,7 +17411,7 @@
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/datasets/Source')]",
-				"[concat(variables('factoryId'), '/datasets/ExRates')]"
+				"[concat(variables('factoryId'), '/datasets/ExRatesJson')]"
 			]
 		}
 	]
