@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Copy data1",
+				"name": "Get ExRates to JSON file",
 				"type": "Copy",
 				"dependsOn": [],
 				"policy": {
@@ -30,28 +30,7 @@
 							"type": "JsonWriteSettings"
 						}
 					},
-					"enableStaging": false,
-					"translator": {
-						"type": "TabularTranslator",
-						"mappings": [
-							{
-								"source": {
-									"path": "$['start_at']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['base']"
-								}
-							},
-							{
-								"source": {
-									"path": "$['end_at']"
-								}
-							}
-						],
-						"collectionReference": "$rates()"
-					}
+					"enableStaging": false
 				},
 				"inputs": [
 					{
@@ -65,6 +44,64 @@
 						"type": "DatasetReference"
 					}
 				]
+			},
+			{
+				"name": "Get JSON files to parse",
+				"type": "Lookup",
+				"dependsOn": [
+					{
+						"activity": "Get ExRates to JSON file",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "JsonSource",
+						"storeSettings": {
+							"type": "AzureBlobFSReadSettings",
+							"recursive": false,
+							"wildcardFileName": "*.json",
+							"enablePartitionDiscovery": false
+						},
+						"formatSettings": {
+							"type": "JsonReadSettings"
+						}
+					},
+					"dataset": {
+						"referenceName": "Json",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Parse JSON files to SQL table",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Get JSON files to parse",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": []
 			}
 		],
 		"annotations": []
