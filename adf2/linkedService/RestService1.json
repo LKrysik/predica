@@ -2,10 +2,6 @@
 	"name": "RestService1",
 	"properties": {
 		"parameters": {
-			"datefrom": {
-				"type": "string",
-				"defaultValue": "2020-01-01"
-			},
 			"dateto": {
 				"type": "string",
 				"defaultValue": "2020-01-03"
