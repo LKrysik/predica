@@ -9,7 +9,7 @@
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
-			"relativeUrl": "/history?start_at=2018-08-22&end_at=2018-09-01"
+			"relativeUrl": "/history?start_at=2018-08-22&end_at=2018-09-15"
 		},
 		"schema": []
 	}
