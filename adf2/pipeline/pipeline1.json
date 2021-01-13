@@ -42,7 +42,17 @@
 				"inputs": [
 					{
 						"referenceName": "RestResource",
-						"type": "DatasetReference"
+						"type": "DatasetReference",
+						"parameters": {
+							"DateFrom": {
+								"value": "@variables('DateFrom')",
+								"type": "Expression"
+							},
+							"DateTo": {
+								"value": "@variables('DateTo')",
+								"type": "Expression"
+							}
+						}
 					}
 				],
 				"outputs": [

@@ -6,10 +6,23 @@
 			"referenceName": "RestService1",
 			"type": "LinkedServiceReference"
 		},
+		"parameters": {
+			"DateFrom": {
+				"type": "String",
+				"defaultValue": "2018-01-01"
+			},
+			"DateTo": {
+				"type": "String",
+				"defaultValue": "2018-02-10"
+			}
+		},
 		"annotations": [],
 		"type": "RestResource",
 		"typeProperties": {
-			"relativeUrl": ""
+			"relativeUrl": {
+				"value": "@concat('/history?start_at=',dataset().DateFrom,'&end_at=',dataset().DateTo)",
+				"type": "Expression"
+			}
 		},
 		"schema": []
 	}
