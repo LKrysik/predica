@@ -195,7 +195,23 @@
 				},
 				"userProperties": [],
 				"typeProperties": {
-					"storedProcedureName": "[dbo].[getLastLoadDate]"
+					"storedProcedureName": "[dbo].[getLastLoadDate]",
+					"storedProcedureParameters": {
+						"DateFrom": {
+							"value": {
+								"value": "@variables('DateFrom')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"DateTo": {
+							"value": {
+								"value": "@variables('DateTo')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
 				},
 				"linkedServiceName": {
 					"referenceName": "AzureSqlDatabase1",
@@ -203,12 +219,14 @@
 				}
 			}
 		],
-		"parameters": {
-			"dateFrom": {
-				"type": "string"
+		"variables": {
+			"DateFrom": {
+				"type": "String",
+				"defaultValue": "2020-01-01"
 			},
-			"dateTo": {
-				"type": "string"
+			"DateTo": {
+				"type": "String",
+				"defaultValue": "2020-01-03"
 			}
 		},
 		"annotations": []
