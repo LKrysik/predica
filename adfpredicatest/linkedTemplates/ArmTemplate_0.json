@@ -11,6 +11,10 @@
 			"type": "secureString",
 			"metadata": "Secure string for 'accountKey' of 'AzureDataLakeStorage1'"
 		},
+		"AzureSqlDatabase1_connectionString": {
+			"type": "secureString",
+			"metadata": "Secure string for 'connectionString' of 'AzureSqlDatabase1'"
+		},
 		"AzureDataLakeStorage1_properties_typeProperties_url": {
 			"type": "string",
 			"defaultValue": "https://storageaccoutforexrates.dfs.core.windows.net"
@@ -57,6 +61,19 @@
 			"dependsOn": []
 		},
 		{
+			"name": "[concat(parameters('factoryName'), '/AzureSqlDatabase1')]",
+			"type": "Microsoft.DataFactory/factories/linkedServices",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"annotations": [],
+				"type": "AzureSqlDatabase",
+				"typeProperties": {
+					"connectionString": "[parameters('AzureSqlDatabase1_connectionString')]"
+				}
+			},
+			"dependsOn": []
+		},
+		{
 			"name": "[concat(parameters('factoryName'), '/Json')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
@@ -73,833 +90,7 @@
 						"fileSystem": "stg"
 					}
 				},
-				"schema": {
-					"type": "object",
-					"properties": {
-						"rates": {
-							"type": "object",
-							"properties": {
-								"2018-08-23": {
-									"type": "object",
-									"properties": {
-										"CAD": {
-											"type": "number"
-										},
-										"HKD": {
-											"type": "number"
-										},
-										"ISK": {
-											"type": "number"
-										},
-										"PHP": {
-											"type": "number"
-										},
-										"DKK": {
-											"type": "number"
-										},
-										"HUF": {
-											"type": "number"
-										},
-										"CZK": {
-											"type": "number"
-										},
-										"AUD": {
-											"type": "number"
-										},
-										"RON": {
-											"type": "number"
-										},
-										"SEK": {
-											"type": "number"
-										},
-										"IDR": {
-											"type": "number"
-										},
-										"INR": {
-											"type": "number"
-										},
-										"BRL": {
-											"type": "number"
-										},
-										"RUB": {
-											"type": "number"
-										},
-										"HRK": {
-											"type": "number"
-										},
-										"JPY": {
-											"type": "number"
-										},
-										"THB": {
-											"type": "number"
-										},
-										"CHF": {
-											"type": "number"
-										},
-										"SGD": {
-											"type": "number"
-										},
-										"PLN": {
-											"type": "number"
-										},
-										"BGN": {
-											"type": "number"
-										},
-										"TRY": {
-											"type": "number"
-										},
-										"CNY": {
-											"type": "number"
-										},
-										"NOK": {
-											"type": "number"
-										},
-										"NZD": {
-											"type": "number"
-										},
-										"ZAR": {
-											"type": "number"
-										},
-										"USD": {
-											"type": "number"
-										},
-										"MXN": {
-											"type": "number"
-										},
-										"ILS": {
-											"type": "number"
-										},
-										"GBP": {
-											"type": "number"
-										},
-										"KRW": {
-											"type": "number"
-										},
-										"MYR": {
-											"type": "number"
-										}
-									}
-								},
-								"2018-08-24": {
-									"type": "object",
-									"properties": {
-										"CAD": {
-											"type": "number"
-										},
-										"HKD": {
-											"type": "number"
-										},
-										"ISK": {
-											"type": "number"
-										},
-										"PHP": {
-											"type": "number"
-										},
-										"DKK": {
-											"type": "number"
-										},
-										"HUF": {
-											"type": "number"
-										},
-										"CZK": {
-											"type": "number"
-										},
-										"AUD": {
-											"type": "number"
-										},
-										"RON": {
-											"type": "number"
-										},
-										"SEK": {
-											"type": "number"
-										},
-										"IDR": {
-											"type": "number"
-										},
-										"INR": {
-											"type": "number"
-										},
-										"BRL": {
-											"type": "number"
-										},
-										"RUB": {
-											"type": "number"
-										},
-										"HRK": {
-											"type": "number"
-										},
-										"JPY": {
-											"type": "number"
-										},
-										"THB": {
-											"type": "number"
-										},
-										"CHF": {
-											"type": "number"
-										},
-										"SGD": {
-											"type": "number"
-										},
-										"PLN": {
-											"type": "number"
-										},
-										"BGN": {
-											"type": "number"
-										},
-										"TRY": {
-											"type": "number"
-										},
-										"CNY": {
-											"type": "number"
-										},
-										"NOK": {
-											"type": "number"
-										},
-										"NZD": {
-											"type": "number"
-										},
-										"ZAR": {
-											"type": "number"
-										},
-										"USD": {
-											"type": "number"
-										},
-										"MXN": {
-											"type": "number"
-										},
-										"ILS": {
-											"type": "number"
-										},
-										"GBP": {
-											"type": "number"
-										},
-										"KRW": {
-											"type": "number"
-										},
-										"MYR": {
-											"type": "number"
-										}
-									}
-								},
-								"2018-08-27": {
-									"type": "object",
-									"properties": {
-										"CAD": {
-											"type": "number"
-										},
-										"HKD": {
-											"type": "number"
-										},
-										"ISK": {
-											"type": "number"
-										},
-										"PHP": {
-											"type": "number"
-										},
-										"DKK": {
-											"type": "number"
-										},
-										"HUF": {
-											"type": "number"
-										},
-										"CZK": {
-											"type": "number"
-										},
-										"AUD": {
-											"type": "number"
-										},
-										"RON": {
-											"type": "number"
-										},
-										"SEK": {
-											"type": "number"
-										},
-										"IDR": {
-											"type": "number"
-										},
-										"INR": {
-											"type": "number"
-										},
-										"BRL": {
-											"type": "number"
-										},
-										"RUB": {
-											"type": "number"
-										},
-										"HRK": {
-											"type": "number"
-										},
-										"JPY": {
-											"type": "number"
-										},
-										"THB": {
-											"type": "number"
-										},
-										"CHF": {
-											"type": "number"
-										},
-										"SGD": {
-											"type": "number"
-										},
-										"PLN": {
-											"type": "number"
-										},
-										"BGN": {
-											"type": "number"
-										},
-										"TRY": {
-											"type": "number"
-										},
-										"CNY": {
-											"type": "number"
-										},
-										"NOK": {
-											"type": "number"
-										},
-										"NZD": {
-											"type": "number"
-										},
-										"ZAR": {
-											"type": "number"
-										},
-										"USD": {
-											"type": "number"
-										},
-										"MXN": {
-											"type": "number"
-										},
-										"ILS": {
-											"type": "number"
-										},
-										"GBP": {
-											"type": "number"
-										},
-										"KRW": {
-											"type": "number"
-										},
-										"MYR": {
-											"type": "number"
-										}
-									}
-								},
-								"2018-08-31": {
-									"type": "object",
-									"properties": {
-										"CAD": {
-											"type": "number"
-										},
-										"HKD": {
-											"type": "number"
-										},
-										"ISK": {
-											"type": "number"
-										},
-										"PHP": {
-											"type": "number"
-										},
-										"DKK": {
-											"type": "number"
-										},
-										"HUF": {
-											"type": "number"
-										},
-										"CZK": {
-											"type": "number"
-										},
-										"AUD": {
-											"type": "number"
-										},
-										"RON": {
-											"type": "number"
-										},
-										"SEK": {
-											"type": "number"
-										},
-										"IDR": {
-											"type": "number"
-										},
-										"INR": {
-											"type": "number"
-										},
-										"BRL": {
-											"type": "number"
-										},
-										"RUB": {
-											"type": "number"
-										},
-										"HRK": {
-											"type": "number"
-										},
-										"JPY": {
-											"type": "number"
-										},
-										"THB": {
-											"type": "number"
-										},
-										"CHF": {
-											"type": "number"
-										},
-										"SGD": {
-											"type": "number"
-										},
-										"PLN": {
-											"type": "number"
-										},
-										"BGN": {
-											"type": "number"
-										},
-										"TRY": {
-											"type": "number"
-										},
-										"CNY": {
-											"type": "number"
-										},
-										"NOK": {
-											"type": "number"
-										},
-										"NZD": {
-											"type": "number"
-										},
-										"ZAR": {
-											"type": "number"
-										},
-										"USD": {
-											"type": "number"
-										},
-										"MXN": {
-											"type": "number"
-										},
-										"ILS": {
-											"type": "number"
-										},
-										"GBP": {
-											"type": "number"
-										},
-										"KRW": {
-											"type": "number"
-										},
-										"MYR": {
-											"type": "number"
-										}
-									}
-								},
-								"2018-08-22": {
-									"type": "object",
-									"properties": {
-										"CAD": {
-											"type": "number"
-										},
-										"HKD": {
-											"type": "number"
-										},
-										"ISK": {
-											"type": "number"
-										},
-										"PHP": {
-											"type": "number"
-										},
-										"DKK": {
-											"type": "number"
-										},
-										"HUF": {
-											"type": "number"
-										},
-										"CZK": {
-											"type": "number"
-										},
-										"AUD": {
-											"type": "number"
-										},
-										"RON": {
-											"type": "number"
-										},
-										"SEK": {
-											"type": "number"
-										},
-										"IDR": {
-											"type": "number"
-										},
-										"INR": {
-											"type": "number"
-										},
-										"BRL": {
-											"type": "number"
-										},
-										"RUB": {
-											"type": "number"
-										},
-										"HRK": {
-											"type": "number"
-										},
-										"JPY": {
-											"type": "number"
-										},
-										"THB": {
-											"type": "number"
-										},
-										"CHF": {
-											"type": "number"
-										},
-										"SGD": {
-											"type": "number"
-										},
-										"PLN": {
-											"type": "number"
-										},
-										"BGN": {
-											"type": "number"
-										},
-										"TRY": {
-											"type": "number"
-										},
-										"CNY": {
-											"type": "number"
-										},
-										"NOK": {
-											"type": "number"
-										},
-										"NZD": {
-											"type": "number"
-										},
-										"ZAR": {
-											"type": "number"
-										},
-										"USD": {
-											"type": "number"
-										},
-										"MXN": {
-											"type": "number"
-										},
-										"ILS": {
-											"type": "number"
-										},
-										"GBP": {
-											"type": "number"
-										},
-										"KRW": {
-											"type": "number"
-										},
-										"MYR": {
-											"type": "number"
-										}
-									}
-								},
-								"2018-08-30": {
-									"type": "object",
-									"properties": {
-										"CAD": {
-											"type": "number"
-										},
-										"HKD": {
-											"type": "number"
-										},
-										"ISK": {
-											"type": "number"
-										},
-										"PHP": {
-											"type": "number"
-										},
-										"DKK": {
-											"type": "number"
-										},
-										"HUF": {
-											"type": "number"
-										},
-										"CZK": {
-											"type": "number"
-										},
-										"AUD": {
-											"type": "number"
-										},
-										"RON": {
-											"type": "number"
-										},
-										"SEK": {
-											"type": "number"
-										},
-										"IDR": {
-											"type": "number"
-										},
-										"INR": {
-											"type": "number"
-										},
-										"BRL": {
-											"type": "number"
-										},
-										"RUB": {
-											"type": "number"
-										},
-										"HRK": {
-											"type": "number"
-										},
-										"JPY": {
-											"type": "number"
-										},
-										"THB": {
-											"type": "number"
-										},
-										"CHF": {
-											"type": "number"
-										},
-										"SGD": {
-											"type": "number"
-										},
-										"PLN": {
-											"type": "number"
-										},
-										"BGN": {
-											"type": "number"
-										},
-										"TRY": {
-											"type": "number"
-										},
-										"CNY": {
-											"type": "number"
-										},
-										"NOK": {
-											"type": "number"
-										},
-										"NZD": {
-											"type": "number"
-										},
-										"ZAR": {
-											"type": "number"
-										},
-										"USD": {
-											"type": "number"
-										},
-										"MXN": {
-											"type": "number"
-										},
-										"ILS": {
-											"type": "number"
-										},
-										"GBP": {
-											"type": "number"
-										},
-										"KRW": {
-											"type": "number"
-										},
-										"MYR": {
-											"type": "number"
-										}
-									}
-								},
-								"2018-08-28": {
-									"type": "object",
-									"properties": {
-										"CAD": {
-											"type": "number"
-										},
-										"HKD": {
-											"type": "number"
-										},
-										"ISK": {
-											"type": "number"
-										},
-										"PHP": {
-											"type": "number"
-										},
-										"DKK": {
-											"type": "number"
-										},
-										"HUF": {
-											"type": "number"
-										},
-										"CZK": {
-											"type": "number"
-										},
-										"AUD": {
-											"type": "number"
-										},
-										"RON": {
-											"type": "number"
-										},
-										"SEK": {
-											"type": "number"
-										},
-										"IDR": {
-											"type": "number"
-										},
-										"INR": {
-											"type": "number"
-										},
-										"BRL": {
-											"type": "number"
-										},
-										"RUB": {
-											"type": "number"
-										},
-										"HRK": {
-											"type": "number"
-										},
-										"JPY": {
-											"type": "number"
-										},
-										"THB": {
-											"type": "number"
-										},
-										"CHF": {
-											"type": "number"
-										},
-										"SGD": {
-											"type": "number"
-										},
-										"PLN": {
-											"type": "number"
-										},
-										"BGN": {
-											"type": "number"
-										},
-										"TRY": {
-											"type": "number"
-										},
-										"CNY": {
-											"type": "number"
-										},
-										"NOK": {
-											"type": "number"
-										},
-										"NZD": {
-											"type": "number"
-										},
-										"ZAR": {
-											"type": "number"
-										},
-										"USD": {
-											"type": "number"
-										},
-										"MXN": {
-											"type": "number"
-										},
-										"ILS": {
-											"type": "number"
-										},
-										"GBP": {
-											"type": "number"
-										},
-										"KRW": {
-											"type": "number"
-										},
-										"MYR": {
-											"type": "number"
-										}
-									}
-								},
-								"2018-08-29": {
-									"type": "object",
-									"properties": {
-										"CAD": {
-											"type": "number"
-										},
-										"HKD": {
-											"type": "number"
-										},
-										"ISK": {
-											"type": "number"
-										},
-										"PHP": {
-											"type": "number"
-										},
-										"DKK": {
-											"type": "number"
-										},
-										"HUF": {
-											"type": "number"
-										},
-										"CZK": {
-											"type": "number"
-										},
-										"AUD": {
-											"type": "number"
-										},
-										"RON": {
-											"type": "number"
-										},
-										"SEK": {
-											"type": "number"
-										},
-										"IDR": {
-											"type": "number"
-										},
-										"INR": {
-											"type": "number"
-										},
-										"BRL": {
-											"type": "number"
-										},
-										"RUB": {
-											"type": "number"
-										},
-										"HRK": {
-											"type": "number"
-										},
-										"JPY": {
-											"type": "number"
-										},
-										"THB": {
-											"type": "number"
-										},
-										"CHF": {
-											"type": "number"
-										},
-										"SGD": {
-											"type": "number"
-										},
-										"PLN": {
-											"type": "number"
-										},
-										"BGN": {
-											"type": "number"
-										},
-										"TRY": {
-											"type": "number"
-										},
-										"CNY": {
-											"type": "number"
-										},
-										"NOK": {
-											"type": "number"
-										},
-										"NZD": {
-											"type": "number"
-										},
-										"ZAR": {
-											"type": "number"
-										},
-										"USD": {
-											"type": "number"
-										},
-										"MXN": {
-											"type": "number"
-										},
-										"ILS": {
-											"type": "number"
-										},
-										"GBP": {
-											"type": "number"
-										},
-										"KRW": {
-											"type": "number"
-										},
-										"MYR": {
-											"type": "number"
-										}
-									}
-								}
-							}
-						},
-						"start_at": {
-							"type": "string"
-						},
-						"base": {
-							"type": "string"
-						},
-						"end_at": {
-							"type": "string"
-						}
-					}
-				}
+				"schema": {}
 			},
 			"dependsOn": [
 				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
@@ -918,7 +109,7 @@
 				"annotations": [],
 				"type": "RestResource",
 				"typeProperties": {
-					"relativeUrl": "/history?start_at=2018-08-22&end_at=2018-09-01"
+					"relativeUrl": ""
 				},
 				"schema": []
 			},
@@ -927,23 +118,222 @@
 			]
 		},
 		{
-			"name": "[concat(parameters('factoryName'), '/RestResource1')]",
+			"name": "[concat(parameters('factoryName'), '/Arch')]",
 			"type": "Microsoft.DataFactory/factories/datasets",
 			"apiVersion": "2018-06-01",
 			"properties": {
 				"linkedServiceName": {
-					"referenceName": "RestService1",
+					"referenceName": "AzureDataLakeStorage1",
 					"type": "LinkedServiceReference"
 				},
 				"annotations": [],
-				"type": "RestResource",
+				"type": "Json",
 				"typeProperties": {
-					"relativeUrl": "/history?start_at=2018-08-22&end_at=2018-09-01"
+					"location": {
+						"type": "AzureBlobFSLocation",
+						"folderPath": "arch",
+						"fileSystem": "stg"
+					}
 				},
-				"schema": []
+				"schema": {}
 			},
 			"dependsOn": [
-				"[concat(variables('factoryId'), '/linkedServices/RestService1')]"
+				"[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage1')]"
+			]
+		},
+		{
+			"name": "[concat(parameters('factoryName'), '/pipeline1')]",
+			"type": "Microsoft.DataFactory/factories/pipelines",
+			"apiVersion": "2018-06-01",
+			"properties": {
+				"activities": [
+					{
+						"name": "Get ExRates to JSON file",
+						"type": "Copy",
+						"dependsOn": [],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "RestSource",
+								"httpRequestTimeout": "00:01:40",
+								"requestInterval": "00.00:00:00.010",
+								"requestMethod": "GET"
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "RestResource",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Json",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					},
+					{
+						"name": "Get JSON files to parse",
+						"type": "Lookup",
+						"dependsOn": [
+							{
+								"activity": "Get ExRates to JSON file",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": false,
+									"wildcardFileName": "*.json",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"dataset": {
+								"referenceName": "Json",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						}
+					},
+					{
+						"name": "Parse JSON files to SQL table",
+						"type": "SqlServerStoredProcedure",
+						"dependsOn": [
+							{
+								"activity": "Get JSON files to parse",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"storedProcedureName": "[[dbo].[exRatesJSONtoTable]",
+							"storedProcedureParameters": {
+								"JSON": {
+									"value": {
+										"value": "@activity('Get JSON files to parse').output",
+										"type": "Expression"
+									},
+									"type": "String"
+								}
+							}
+						},
+						"linkedServiceName": {
+							"referenceName": "AzureSqlDatabase1",
+							"type": "LinkedServiceReference"
+						}
+					},
+					{
+						"name": "Move JSON files to ARCH",
+						"type": "Copy",
+						"dependsOn": [
+							{
+								"activity": "Parse JSON files to SQL table",
+								"dependencyConditions": [
+									"Succeeded"
+								]
+							}
+						],
+						"policy": {
+							"timeout": "7.00:00:00",
+							"retry": 0,
+							"retryIntervalInSeconds": 30,
+							"secureOutput": false,
+							"secureInput": false
+						},
+						"userProperties": [],
+						"typeProperties": {
+							"source": {
+								"type": "JsonSource",
+								"storeSettings": {
+									"type": "AzureBlobFSReadSettings",
+									"recursive": false,
+									"wildcardFileName": "*.json",
+									"enablePartitionDiscovery": false
+								},
+								"formatSettings": {
+									"type": "JsonReadSettings"
+								}
+							},
+							"sink": {
+								"type": "JsonSink",
+								"storeSettings": {
+									"type": "AzureBlobFSWriteSettings",
+									"copyBehavior": "MergeFiles"
+								},
+								"formatSettings": {
+									"type": "JsonWriteSettings"
+								}
+							},
+							"enableStaging": false
+						},
+						"inputs": [
+							{
+								"referenceName": "Json",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						],
+						"outputs": [
+							{
+								"referenceName": "Arch",
+								"type": "DatasetReference",
+								"parameters": {}
+							}
+						]
+					}
+				],
+				"annotations": []
+			},
+			"dependsOn": [
+				"[concat(variables('factoryId'), '/datasets/RestResource')]",
+				"[concat(variables('factoryId'), '/datasets/Json')]",
+				"[concat(variables('factoryId'), '/linkedServices/AzureSqlDatabase1')]",
+				"[concat(variables('factoryId'), '/datasets/Arch')]"
 			]
 		}
 	]
