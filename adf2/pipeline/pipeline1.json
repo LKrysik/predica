@@ -97,7 +97,8 @@
 					"dataset": {
 						"referenceName": "Json",
 						"type": "DatasetReference"
-					}
+					},
+					"firstRowOnly": false
 				}
 			},
 			{
@@ -124,7 +125,7 @@
 					"storedProcedureParameters": {
 						"JSON": {
 							"value": {
-								"value": "@activity('Get JSON files to parse').output",
+								"value": "@string(activity('Get JSON files to parse').output.value)",
 								"type": "Expression"
 							},
 							"type": "String"
