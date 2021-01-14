@@ -10,7 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"fileSystem": "stg"
+				"folderPath": "ExRates/JSON",
+				"fileSystem": "storage"
 			}
 		},
 		"schema": {}

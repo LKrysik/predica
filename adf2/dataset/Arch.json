@@ -10,8 +10,8 @@
 		"typeProperties": {
 			"location": {
 				"type": "AzureBlobFSLocation",
-				"folderPath": "arch",
-				"fileSystem": "stg"
+				"folderPath": "ExRates/ARCH",
+				"fileSystem": "storage"
 			}
 		},
 		"schema": {}
