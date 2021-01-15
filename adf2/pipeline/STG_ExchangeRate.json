@@ -200,35 +200,6 @@
 				]
 			},
 			{
-				"name": "Get Last Data Load",
-				"type": "SqlServerStoredProcedure",
-				"dependsOn": [],
-				"policy": {
-					"timeout": "7.00:00:00",
-					"retry": 0,
-					"retryIntervalInSeconds": 30,
-					"secureOutput": false,
-					"secureInput": false
-				},
-				"userProperties": [],
-				"typeProperties": {
-					"storedProcedureName": "[dbo].[getLastLoadDate]",
-					"storedProcedureParameters": {
-						"Area": {
-							"value": {
-								"value": "@string(pipeline().Pipeline)",
-								"type": "Expression"
-							},
-							"type": "String"
-						}
-					}
-				},
-				"linkedServiceName": {
-					"referenceName": "AzureSqlDatabase1",
-					"type": "LinkedServiceReference"
-				}
-			},
-			{
 				"name": "Delete JSON in active directory",
 				"type": "Delete",
 				"dependsOn": [
@@ -316,7 +287,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "Get Last Data Load",
+						"activity": "Lookup1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -326,7 +297,7 @@
 				"typeProperties": {
 					"variableName": "DateTo",
 					"value": {
-						"value": "@activity('Get Last Data Load').output.firstRow.DateTo",
+						"value": "@activity('Lookup1').output.value.DateTo",
 						"type": "Expression"
 					}
 				}
@@ -336,7 +307,7 @@
 				"type": "SetVariable",
 				"dependsOn": [
 					{
-						"activity": "Get Last Data Load",
+						"activity": "Lookup1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -346,9 +317,38 @@
 				"typeProperties": {
 					"variableName": "DateFrom",
 					"value": {
-						"value": "@activity('Get Last Data Load').output.firstRow.DateFrom",
+						"value": "@activity('Lookup1').output.value.DateFrom",
 						"type": "Expression"
 					}
+				}
+			},
+			{
+				"name": "Lookup1",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderQuery": {
+							"value": "@concat('exec dbo.getLastLoadDate ''', pipeline().Pipeline,'''')",
+							"type": "Expression"
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					},
+					"firstRowOnly": false
 				}
 			}
 		],
