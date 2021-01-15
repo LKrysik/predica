@@ -326,7 +326,7 @@
 				"typeProperties": {
 					"variableName": "DateTo",
 					"value": {
-						"value": "@activity('Get Last Data Load').output",
+						"value": "@activity('Get Last Data Load').output.firstRow.DateTo",
 						"type": "Expression"
 					}
 				}
@@ -346,7 +346,7 @@
 				"typeProperties": {
 					"variableName": "DateFrom",
 					"value": {
-						"value": "@activity('Get Last Data Load').output",
+						"value": "@activity('Get Last Data Load').output.firstRow.DateFrom",
 						"type": "Expression"
 					}
 				}
