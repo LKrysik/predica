@@ -1,5 +1,5 @@
 {
-	"name": "pipeline1",
+	"name": "STG_ExchangeRate",
 	"properties": {
 		"activities": [
 			{
@@ -7,7 +7,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Get Last Data Load",
+						"activity": "Set variable1",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -210,7 +210,7 @@
 					"storedProcedureParameters": {
 						"Area": {
 							"value": {
-								"value": "@variables('Area')",
+								"value": "@string(pipeline().Pipeline)",
 								"type": "Expression"
 							},
 							"type": "String"
@@ -318,20 +318,37 @@
 					"referenceName": "AzureSqlDatabase1",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Set variable1",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Get Last Data Load",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "DateTo",
+					"value": {
+						"value": "@activity('Get Last Data Load').output.DateTo",
+						"type": "Expression"
+					}
+				}
 			}
 		],
 		"variables": {
 			"DateFrom": {
-				"type": "String",
-				"defaultValue": "2020-01-01"
+				"type": "String"
 			},
 			"DateTo": {
-				"type": "String",
-				"defaultValue": "2020-01-03"
+				"type": "String"
 			},
 			"Area": {
-				"type": "String",
-				"defaultValue": "STG_ExchangeRate"
+				"type": "String"
 			}
 		},
 		"annotations": []
