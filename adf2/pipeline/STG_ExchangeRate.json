@@ -7,7 +7,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Set variable1",
+						"activity": "Get Last Data Load",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -317,26 +317,6 @@
 				"linkedServiceName": {
 					"referenceName": "AzureSqlDatabase1",
 					"type": "LinkedServiceReference"
-				}
-			},
-			{
-				"name": "Set variable1",
-				"type": "SetVariable",
-				"dependsOn": [
-					{
-						"activity": "Get Last Data Load",
-						"dependencyConditions": [
-							"Succeeded"
-						]
-					}
-				],
-				"userProperties": [],
-				"typeProperties": {
-					"variableName": "DateTo",
-					"value": {
-						"value": "@activity('Get Last Data Load').output.DateTo",
-						"type": "Expression"
-					}
 				}
 			}
 		],
