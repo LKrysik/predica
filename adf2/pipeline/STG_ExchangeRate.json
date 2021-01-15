@@ -7,7 +7,13 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Get Last Data Load",
+						"activity": "Set DateTo",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					},
+					{
+						"activity": "Set DateFrom",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -214,20 +220,6 @@
 								"type": "Expression"
 							},
 							"type": "String"
-						},
-						"DateFrom": {
-							"value": {
-								"value": "@variables('DateFrom')",
-								"type": "Expression"
-							},
-							"type": "String"
-						},
-						"DateTo": {
-							"value": {
-								"value": "@variables('DateTo')",
-								"type": "Expression"
-							},
-							"type": "String"
 						}
 					}
 				},
@@ -317,6 +309,46 @@
 				"linkedServiceName": {
 					"referenceName": "AzureSqlDatabase1",
 					"type": "LinkedServiceReference"
+				}
+			},
+			{
+				"name": "Set DateTo",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Get Last Data Load",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "DateTo",
+					"value": {
+						"value": "@activity('Get Last Data Load').output",
+						"type": "Expression"
+					}
+				}
+			},
+			{
+				"name": "Set DateFrom",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Get Last Data Load",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": [],
+				"typeProperties": {
+					"variableName": "DateFrom",
+					"value": {
+						"value": "@activity('Get Last Data Load').output",
+						"type": "Expression"
+					}
 				}
 			}
 		],
