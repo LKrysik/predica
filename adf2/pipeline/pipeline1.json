@@ -7,7 +7,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Get Parameters",
+						"activity": "Get Last Data Load",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -194,7 +194,7 @@
 				]
 			},
 			{
-				"name": "Get Parameters",
+				"name": "Get Last Data Load",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [],
 				"policy": {
@@ -209,7 +209,10 @@
 					"storedProcedureName": "[dbo].[getLastLoadDate]",
 					"storedProcedureParameters": {
 						"Area": {
-							"value": "STG_ExchangeRate",
+							"value": {
+								"value": "@variables('Area')",
+								"type": "Expression"
+							},
 							"type": "String"
 						},
 						"DateFrom": {
@@ -272,6 +275,49 @@
 						"enablePartitionDiscovery": false
 					}
 				}
+			},
+			{
+				"name": "Set Last Data Load",
+				"type": "SqlServerStoredProcedure",
+				"dependsOn": [
+					{
+						"activity": "Parse JSON files to SQL table",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"storedProcedureName": "[dbo].[setLastLoadDate]",
+					"storedProcedureParameters": {
+						"Area": {
+							"value": {
+								"value": "@variables('Area')",
+								"type": "Expression"
+							},
+							"type": "String"
+						},
+						"Date": {
+							"value": {
+								"value": "@variables('DateTo')",
+								"type": "Expression"
+							},
+							"type": "String"
+						}
+					}
+				},
+				"linkedServiceName": {
+					"referenceName": "AzureSqlDatabase1",
+					"type": "LinkedServiceReference"
+				}
 			}
 		],
 		"variables": {
@@ -282,6 +328,10 @@
 			"DateTo": {
 				"type": "String",
 				"defaultValue": "2020-01-03"
+			},
+			"Area": {
+				"type": "String",
+				"defaultValue": "STG_ExchangeRate"
 			}
 		},
 		"annotations": []
