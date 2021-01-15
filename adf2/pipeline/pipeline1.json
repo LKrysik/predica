@@ -7,7 +7,7 @@
 				"type": "Copy",
 				"dependsOn": [
 					{
-						"activity": "Stored procedure1",
+						"activity": "Get Parameters",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -194,7 +194,7 @@
 				]
 			},
 			{
-				"name": "Stored procedure1",
+				"name": "Get Parameters",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [],
 				"policy": {
@@ -208,6 +208,10 @@
 				"typeProperties": {
 					"storedProcedureName": "[dbo].[getLastLoadDate]",
 					"storedProcedureParameters": {
+						"Area": {
+							"value": "STG_ExchangeRate",
+							"type": "String"
+						},
 						"DateFrom": {
 							"value": {
 								"value": "@variables('DateFrom')",
