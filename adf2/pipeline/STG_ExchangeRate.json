@@ -300,7 +300,7 @@
 					"storedProcedureParameters": {
 						"Area": {
 							"value": {
-								"value": "@variables('Area')",
+								"value": "@pipeline().Pipeline",
 								"type": "Expression"
 							},
 							"type": "String"
