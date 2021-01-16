@@ -297,7 +297,7 @@
 				"typeProperties": {
 					"variableName": "DateTo",
 					"value": {
-						"value": "@activity('Lookup1').output.value[0].DateTo",
+						"value": "@activity('Get Load Params').output.value[0].DateTo",
 						"type": "Expression"
 					}
 				}
@@ -317,7 +317,7 @@
 				"typeProperties": {
 					"variableName": "DateFrom",
 					"value": {
-						"value": "@activity('Lookup1').output.value[0].DateFrom",
+						"value": "@activity('Get Load Params').output.value[0].DateFrom",
 						"type": "Expression"
 					}
 				}
