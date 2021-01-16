@@ -819,7 +819,7 @@
 				}
 			},
 			{
-				"name": "Log 0_copy1",
+				"name": "Log 3",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
@@ -884,7 +884,7 @@
 				}
 			},
 			{
-				"name": "Log error 0_copy1",
+				"name": "Log error 3",
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
