@@ -17,7 +17,7 @@
 			},
 			"CurrencyListToLoad": {
 				"type": "string",
-				"defaultValue": "USD,PLN,EUR,CAD,CHF,GBP"
+				"defaultValue": "USD,PLN,CAD,CHF,GBP"
 			}
 		},
 		"annotations": [],
