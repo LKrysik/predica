@@ -623,7 +623,7 @@
 							"type": "String"
 						},
 						"TaskName": {
-							"value": "Get Load Params",
+							"value": "Get ExRates to JSON file",
 							"type": "String"
 						}
 					}
