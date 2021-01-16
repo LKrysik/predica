@@ -17,6 +17,12 @@
 						"dependencyConditions": [
 							"Succeeded"
 						]
+					},
+					{
+						"activity": "Set CurrencyListToLoad",
+						"dependencyConditions": [
+							"Succeeded"
+						]
 					}
 				],
 				"policy": {
@@ -755,6 +761,50 @@
 					"referenceName": "AzureSqlDatabase1",
 					"type": "LinkedServiceReference"
 				}
+			},
+			{
+				"name": "Get currency list to load",
+				"type": "Lookup",
+				"dependsOn": [],
+				"policy": {
+					"timeout": "7.00:00:00",
+					"retry": 0,
+					"retryIntervalInSeconds": 30,
+					"secureOutput": false,
+					"secureInput": false
+				},
+				"userProperties": [],
+				"typeProperties": {
+					"source": {
+						"type": "AzureSqlSource",
+						"sqlReaderStoredProcedureName": "[dbo].[GetParamValue]",
+						"storedProcedureParameters": {
+							"ParamName": {
+								"type": "String",
+								"value": "Exchange currency list to load"
+							}
+						},
+						"queryTimeout": "02:00:00",
+						"partitionOption": "None"
+					},
+					"dataset": {
+						"referenceName": "AzureSqlTable1",
+						"type": "DatasetReference"
+					}
+				}
+			},
+			{
+				"name": "Set CurrencyListToLoad",
+				"type": "SetVariable",
+				"dependsOn": [
+					{
+						"activity": "Get currency list to load",
+						"dependencyConditions": [
+							"Succeeded"
+						]
+					}
+				],
+				"userProperties": []
 			}
 		],
 		"variables": {
@@ -762,6 +812,9 @@
 				"type": "String"
 			},
 			"DateTo": {
+				"type": "String"
+			},
+			"CurrencyListToLoad": {
 				"type": "String"
 			}
 		},
