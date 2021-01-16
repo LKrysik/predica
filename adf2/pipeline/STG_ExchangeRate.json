@@ -3,7 +3,7 @@
 	"properties": {
 		"activities": [
 			{
-				"name": "Get ExRates to JSON file ",
+				"name": "Get ExRates to JSON file",
 				"type": "Copy",
 				"dependsOn": [
 					{
@@ -83,7 +83,7 @@
 				"type": "Lookup",
 				"dependsOn": [
 					{
-						"activity": "Get ExRates to JSON file ",
+						"activity": "Get ExRates to JSON file",
 						"dependencyConditions": [
 							"Succeeded"
 						]
@@ -505,7 +505,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Get ExRates to JSON file ",
+						"activity": "Get ExRates to JSON file",
 						"dependencyConditions": [
 							"Completed"
 						]
@@ -570,7 +570,7 @@
 				"type": "SqlServerStoredProcedure",
 				"dependsOn": [
 					{
-						"activity": "Get ExRates to JSON file ",
+						"activity": "Get ExRates to JSON file",
 						"dependencyConditions": [
 							"Failed"
 						]
