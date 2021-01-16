@@ -63,6 +63,10 @@
 							"DateTo": {
 								"value": "@variables('DateTo')",
 								"type": "Expression"
+							},
+							"CurrencyListToLoad": {
+								"value": "@variables('CurrencyListToLoad')",
+								"type": "Expression"
 							}
 						}
 					}
