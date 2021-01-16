@@ -337,9 +337,15 @@
 				"typeProperties": {
 					"source": {
 						"type": "AzureSqlSource",
-						"sqlReaderQuery": {
-							"value": "@concat('exec dbo.getLastLoadDate ''', pipeline().Pipeline,'''')",
-							"type": "Expression"
+						"sqlReaderStoredProcedureName": "[dbo].[getLastLoadDate]",
+						"storedProcedureParameters": {
+							"Area": {
+								"type": "String",
+								"value": {
+									"value": "@pipeline().Pipeline",
+									"type": "Expression"
+								}
+							}
 						},
 						"queryTimeout": "02:00:00",
 						"partitionOption": "None"
@@ -357,9 +363,6 @@
 				"type": "String"
 			},
 			"DateTo": {
-				"type": "String"
-			},
-			"Area": {
 				"type": "String"
 			}
 		},
